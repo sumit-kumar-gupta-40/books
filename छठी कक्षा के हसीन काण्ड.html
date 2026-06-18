@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>छठी कक्षा के हसीन काण्ड</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Kalam', cursive;
+    background:
+        radial-gradient(circle at center,
+        #f8edd0 0%,
+        #e6d3a3 100%);
+    min-height:100vh;
+    padding:40px 20px;
+    color:#4a2c17;
+}
+
+.scroll{
+    max-width:950px;
+    margin:auto;
+    background:#f8edd0;
+    padding:50px 40px;
+    border:8px solid #8b5a2b;
+    border-radius:15px;
+
+    box-shadow:
+        0 0 30px rgba(0,0,0,0.25),
+        inset 0 0 80px rgba(139,90,43,0.15);
+
+    position:relative;
+    overflow:hidden;
+
+    animation:scrollOpen 1.2s ease;
+}
+
+@keyframes scrollOpen{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.scroll::after{
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+
+    width:100px;
+    height:100px;
+
+    background:
+    linear-gradient(
+        135deg,
+        transparent 50%,
+        rgba(0,0,0,.12) 50%
+    );
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.hero::after{
+    content:"📜 ✦ 📚 ✦ 📜";
+    display:block;
+    margin-top:10px;
+    font-size:1.3rem;
+}
+
+.main-title{
+    font-size:3rem;
+    color:#5b3a1e;
+    text-shadow:2px 2px 3px rgba(0,0,0,.15);
+
+    animation:glow 3s infinite alternate;
+}
+
+@keyframes glow{
+    from{
+        text-shadow:0 0 5px #fff;
+    }
+    to{
+        text-shadow:
+        0 0 20px #d4af37,
+        0 0 40px #d4af37;
+    }
+}
+
+.subtitle{
+    text-align:center;
+    color:#6b4423;
+    margin-top:10px;
+    font-size:1.2rem;
+}
+
+.quote{
+    max-width:800px;
+    margin:40px auto;
+
+    background:rgba(255,255,255,.25);
+
+    border-left:6px solid #8b5a2b;
+    border-right:6px solid #8b5a2b;
+
+    border-radius:12px;
+
+    padding:25px;
+
+    text-align:center;
+
+    line-height:2;
+
+    color:#5b3a1e;
+
+    font-size:1.2rem;
+
+    animation:fadeIn 2s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+.description{
+    font-size:1.25rem;
+    line-height:2;
+    text-align:justify;
+    margin-top:25px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+
+    margin-top:40px;
+}
+
+.book-btn{
+    text-decoration:none;
+    color:white;
+
+    background:#8b5a2b;
+
+    padding:14px 28px;
+
+    border-radius:40px;
+
+    font-size:1.1rem;
+
+    transition:.3s;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.book-btn:hover{
+    transform:translateY(-3px) scale(1.05);
+}
+
+.footer{
+    text-align:center;
+    margin-top:50px;
+    color:#6b4423;
+    font-size:1.1rem;
+}
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+
+    background:
+    radial-gradient(
+        circle at top,
+        rgba(255,220,120,.15),
+        transparent 50%
+    );
+}
+
+.particles{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:1;
+}
+
+.particles span{
+    position:absolute;
+    width:4px;
+    height:4px;
+    background:#fff;
+    border-radius:50%;
+    opacity:.4;
+
+    animation:float 8s infinite alternate;
+}
+
+.particles span:nth-child(1){left:10%;top:20%;}
+.particles span:nth-child(2){left:30%;top:70%;}
+.particles span:nth-child(3){left:60%;top:30%;}
+.particles span:nth-child(4){left:80%;top:60%;}
+.particles span:nth-child(5){left:90%;top:10%;}
+
+@keyframes float{
+    from{
+        transform:translateY(0);
+    }
+    to{
+        transform:translateY(-20px);
+    }
+}
+
+@media(max-width:700px){
+
+    .main-title{
+        font-size:2rem;
+    }
+
+    .description{
+        font-size:1rem;
+    }
+
+    .book-btn{
+        width:100%;
+        text-align:center;
+    }
+
+    .scroll{
+        padding:30px 20px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div class="scroll">
+
+    <div class="hero">
+
+        <h1 class="main-title">
+            📜 छठी कक्षा के हसीन काण्ड 📜
+        </h1>
+
+        <p class="subtitle">
+            हसीन काण्ड श्रृंखला
+        </p>
+
+    </div>
+
+    <blockquote class="quote">
+
+        ❝ पुस्तकें केवल शुष्क जानकारियों अथवा ज्ञानार्जन का संकलन मात्र नहीं हैं,
+        अपितु वे जीवन के उन अनमोल, जीवंत और चंचल क्षणों को सदैव के लिए
+        स्मृतियों के झरोखे में सुरक्षित रखने का माध्यम हैं। ❞
+
+    </blockquote>
+
+    <div class="description">
+
+        विद्यालय जीवन की मधुर स्मृतियों, मित्रता, शरारतों,
+        हास्य, रोमांच तथा अविस्मरणीय घटनाओं से परिपूर्ण
+        यह पुस्तक पाठकों को छठी कक्षा के सुनहरे दिनों की
+        एक अद्भुत यात्रा पर ले जाती है।
+
+    </div>
+
+    <div class="buttons">
+
+        <a class="book-btn"
+           href="./छठी कक्षा के हसीन काण्ड.pdf"
+           target="_blank">
+           📖 पुस्तक पढ़ें
+        </a>
+
+        <a class="book-btn"
+           href="./छठी कक्षा के हसीन काण्ड.pdf"
+           download>
+           ⬇️ पुस्तक डाउनलोड करें
+        </a>
+
+    </div>
+
+    <div class="footer">
+        ✦ लेखक: सुमित कुमार गुप्ता ✦
+        <br>
+        <small>© 2026 सर्वाधिकार सुरक्षित</small>
+    </div>
+
+</div>
+
+</body>
+</html>
