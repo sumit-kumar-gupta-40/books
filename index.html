@@ -600,6 +600,28 @@ class="author-image">
 </div>
 
 </div>
-<script> document.getElementById('year').innerText = new Date().getFullYear();</script>
+<script>
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        window.addEventListener('DOMContentLoaded', () => {
+    // केवल उन पुस्तकों को गिनना जो 'upcoming' (शीघ्र प्रकाश्य) श्रेणी में नहीं हैं
+    const publishedBooksCount = document.querySelectorAll('.book-list li:not(.upcoming)').length;
+    const counterElement = document.getElementById('book-counter');
+    
+    let currentCount = 0;
+    const duration = 1500; // एनीमेशन का समय (मिलीसेकंड में)
+    const stepTime = Math.max(Math.floor(duration / publishedBooksCount), 50);
+    
+    const timer = setInterval(() => {
+        if (currentCount >= publishedBooksCount) {
+            clearInterval(timer);
+        } else {
+            currentCount++;
+            counterElement.innerText = currentCount;
+        }
+    }, stepTime);
+});
+
+</script>
 </body>
 </html>
