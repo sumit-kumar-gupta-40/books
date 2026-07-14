@@ -403,6 +403,82 @@ box-shadow:
 0 0 20px rgba(0,0,0,.25),
 0 0 40px rgba(212,175,55,.35);
 }
+
+        .stat-container {
+display: flex;
+justify-content: center;
+margin: 30px auto 10px auto;
+animation: fadeInUp 1.5s ease-out;
+}
+
+.stat-box {
+background: rgba(255, 255, 255, 0.45);
+border: 3px double #8b5a2b;
+border-radius: 12px;
+padding: 15px 35px;
+text-align: center;
+box-shadow: 0 5px 15px rgba(139,90,43,0.1);
+transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+cursor: default;
+position: relative;
+overflow: hidden;
+}
+
+.stat-box:hover {
+transform: translateY(-5px) scale(1.03);
+background: rgba(255, 255, 255, 0.7);
+box-shadow: 0 10px 25px rgba(139,90,43,0.25), 0 0 15px rgba(214, 175, 55, 0.4);
+}
+
+.stat-box::before {
+content: '';
+position: absolute;
+top: -50%;
+left: -50%;
+width: 200%;
+height: 200%;
+background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+transform: rotate(45deg);
+transition: 0.6s;
+opacity: 0;
+}
+
+.stat-box:hover::before {
+animation: shine 1.5s infinite;
+opacity: 1;
+}
+
+.stat-number {
+font-size: 2.8rem;
+font-weight: 700;
+color: #8b5a2b;
+line-height: 1;
+margin-bottom: 5px;
+text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+animation: pulseGlow 2s infinite alternate;
+}
+
+.stat-label {
+font-size: 1.1rem;
+color: #5b3a1e;
+font-weight: bold;
+letter-spacing: 0.5px;
+}
+
+@keyframes shine {
+0% { left: -50%; }
+100% { left: 125%; }
+}
+
+@keyframes pulseGlow {
+from { text-shadow: 0 0 2px rgba(139,90,43,0.2); }
+to { text-shadow: 0 0 12px rgba(212,175,55,0.6), 0 0 5px rgba(139,90,43,0.4); }
+}
+
+@keyframes fadeInUp {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+                             }
 </style>
 
 </head>
@@ -450,6 +526,14 @@ class="author-image">
 हमें परिपक्वता प्रदान करते हैं और श्रेष्ठ मानव बनाते हैं। ❞
 
 </blockquote>
+
+        
+<div class="stat-container">
+<div class="stat-box">
+<div class="stat-number" id="book-counter">0</div>
+<div class="stat-label">📖 कुल प्रकाशित पुस्तकें</div>
+</div>
+</div>
 
 <section class="series-section">
 
