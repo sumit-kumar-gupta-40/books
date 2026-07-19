@@ -233,14 +233,37 @@ text-shadow:
 .author-card{
 text-align:center;
 margin:40px auto;
+max-width: 600px;
+background: rgba(255, 255, 255, 0.2);
+padding: 25px;
+border-radius: 15px;
+border: 1px dashed #8b5a2b;
 }
 
 .author-card h2{
 margin-top:15px;
+color: #5b3a1e;
+font-size: 2rem;
 }
 
-.author-role{
-opacity:.8;
+.author-info-sub {
+font-size: 1.1rem;
+margin-top: 10px;
+line-height: 1.6;
+text-align: center; /* पूरे बॉक्स के टेक्स्ट को सेंटर करने के लिए */
+display: inline-block;
+width: 100%;
+max-width: 550px;
+}
+
+.author-info-sub p {
+margin-bottom: 6px;
+border-bottom: 1px dashed rgba(139,90,43,0.15);
+padding-bottom: 4px;
+}
+
+.author-info-sub p strong {
+color: #5b3a1e;
 }
 
 .author-image{
@@ -266,8 +289,6 @@ background:rgba(255,255,255,.25);
 border-radius:15px;
 }
 
-
-
 body::before{
 content:"";
 position:fixed;
@@ -281,48 +302,6 @@ rgba(255,220,120,.15),
 transparent 50%
 );
 }
-
-
-
-/* AUTHOR */
-
-.author-card{
-text-align:center;
-margin:40px 0;
-}
-
-.author-image{
-width:200px;
-height:200px;
-border-radius:50%;
-object-fit:cover;
-
-border:8px solid #8b5a2b;
-
-transition:.4s;
-}
-
-.author-image:hover{
-transform:scale(1.05);
-}
-
-/* QUOTE */
-
-.quote{
-max-width:800px;
-margin:auto;
-
-line-height:2;
-
-padding:25px;
-
-background:rgba(255,255,255,.25);
-
-border-radius:15px;
-
-text-align:center;
-}
-
 
 .book-list a{
 display:flex;
@@ -404,7 +383,7 @@ box-shadow:
 0 0 40px rgba(212,175,55,.35);
 }
 
-/* --- UPDATED STAT BOX STYLE --- */
+/* --- STAT BOX STYLE --- */
 .stat-container {
 display: flex;
 justify-content: center;
@@ -518,9 +497,13 @@ class="author-image">
 
 <h2>सुमित कुमार गुप्त</h2>
 
-<p class="author-role">
-लेखक
-</p>
+<div class="author-info-sub">
+<p><strong>👤 मूल नाम:</strong> सुमित दासगुप्त</p>
+<p><strong>🎂 आयु:</strong> <span id="calculated-age">--</span> वर्ष</p>
+<p><strong>🏫 शैक्षणिक संस्थान:</strong> दिल्ली पब्लिक स्कूल (डी.पी.एस.), शंकरपुर, बड़कागांव मार्ग, हज़ारीबाग - ८२५ ३०१</p>
+<p><strong>🏠 पता:</strong> छोटा अखाड़ा मार्ग, ग्राम- परसी, प्रखंड- ईचाक, हज़ारीबाग, झारखंड - ८२५ ४०२</p>
+<p><strong>✉️ विद्युतीय पत्र:</strong> <a href="mailto:dasgupta.1234@outlook.com" style="color: #6b4423; text-decoration: none;">dasgupta.1234@outlook.com</a></p>
+</div>
 
 </div>
 
@@ -607,30 +590,31 @@ class="author-image">
 
 </div>
 <script>
-        document.getElementById('year').innerText = new Date().getFullYear();
-
-        window.addEventListener('DOMContentLoaded', () => {
-
-    const publishedBooksCount = document.querySelectorAll('.book-list li:not(.upcoming)').length;
-    const counterElement = document.getElementById('book-counter');
+    const currentYear = new Date().getFullYear();
+    document.getElementById('year').innerText = currentYear;
     
-    let currentCount = 0;
-    const duration = 1500;
-    const stepTime = Math.max(Math.floor(duration / publishedBooksCount), 50);
-    
-  
-    const formatNumber = (num) => num.toString().padStart(2, '0');
-    
-    const timer = setInterval(() => {
-        if (currentCount >= publishedBooksCount) {
-            clearInterval(timer);
-        } else {
-            currentCount++;
-            counterElement.innerText = formatNumber(currentCount);
-        }
-    }, stepTime);
-});
+    const birthYear = 2014;
+    document.getElementById('calculated-age').innerText = currentYear - birthYear;
 
+    window.addEventListener('DOMContentLoaded', () => {
+        const publishedBooksCount = document.querySelectorAll('.book-list li:not(.upcoming)').length;
+        const counterElement = document.getElementById('book-counter');
+        
+        let currentCount = 0;
+        const duration = 1500; 
+        const stepTime = Math.max(Math.floor(duration / publishedBooksCount), 50);
+        
+        const formatNumber = (num) => num.toString().padStart(2, '0');
+        
+        const timer = setInterval(() => {
+            if (currentCount >= publishedBooksCount) {
+                clearInterval(timer);
+            } else {
+                currentCount++;
+                counterElement.innerText = formatNumber(currentCount);
+            }
+        }, stepTime);
+    });
 </script>
 </body>
-</html>
+  </html>
