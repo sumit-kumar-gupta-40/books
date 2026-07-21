@@ -250,7 +250,7 @@ font-size: 2rem;
 font-size: 1.1rem;
 margin-top: 10px;
 line-height: 1.6;
-text-align: center; /* पूरे बॉक्स के टेक्स्ट को सेंटर करने के लिए */
+text-align: center;
 display: inline-block;
 width: 100%;
 max-width: 550px;
@@ -589,12 +589,26 @@ class="author-image">
 </div>
 
 </div>
+
 <script>
-    const currentYear = new Date().getFullYear();
-    document.getElementById('year').innerText = currentYear;
+    const today = new Date();
+    document.getElementById('year').innerText = today.getFullYear();
     
-    const birthYear = 2014;
-    document.getElementById('calculated-age').innerText = currentYear - birthYear;
+    // Exact Age Calculation Logic based on 06 January 2014
+    function getExactAge(birthDateString) {
+        const birthDate = new Date(birthDateString);
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const monthDifference = today.getMonth() - birthDate.getMonth();
+        
+        // Adjust age if the birth month/date hasn't occurred yet in the current year
+        if (monthDifference < 0 || (monthDifference === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+
+    // Setting age for 06 Jan 2014
+    document.getElementById('calculated-age').innerText = getExactAge('2014-01-06');
 
     window.addEventListener('DOMContentLoaded', () => {
         const publishedBooksCount = document.querySelectorAll('.book-list li:not(.upcoming)').length;
@@ -618,3 +632,4 @@ class="author-image">
 </script>
 </body>
   </html>
+  
